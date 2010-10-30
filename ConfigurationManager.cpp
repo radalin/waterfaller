@@ -30,6 +30,7 @@ void ConfigurationManager::parse(string line) {
         }
         string value(line.substr((int)positionOfEqual + 1));
         string key(line.substr(0, (int)positionOfEqual));
+        //FIXME: I have to trim the values and keys as white spaces can cause problems...
         vector<string>::iterator it;
         //Append the keys...
         it = keys.begin();
