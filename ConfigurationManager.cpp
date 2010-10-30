@@ -23,10 +23,20 @@ ConfigurationManager::ConfigurationManager() {
 void ConfigurationManager::parse(string line) {
     if (!this->isCommentLine(line)) { //Only parse the uncommented lines...
         //TODO: Find out how to split the settings lines....
+        size_t positionOfEqual;
+        positionOfEqual = line.find('=');
+        if (positionOfEqual == string::npos) {
+            return; //Do not parse lines which does not have an equal sign...
+        }
+        string value(line.substr((int)positionOfEqual + 1));
+        string key(line.substr(0, (int)positionOfEqual));
         vector<string>::iterator it;
+        //Append the keys...
         it = keys.begin();
-        it = keys.insert (it, line);
-        //cout << line << "size of vector: " << keys.size() << "\n";
+        it = keys.insert (it, key);
+        //Append the values...
+        it = values.begin();
+        it = values.insert (it, value);
     }
 }
 
