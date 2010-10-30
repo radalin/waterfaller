@@ -12,6 +12,7 @@ App::App() {
 }
 
 void App::run() {
+    cout << ConfigurationManager::getInstance()->getConf("foo") << "\n";
 }
 
 App* App::bootstrap() {

@@ -42,7 +42,16 @@ void ConfigurationManager::parse(string line) {
 
 string ConfigurationManager::getConf(string key) {
     //Find the position for the key and return the value...
-    
+    int position = NULL;
+    for (int i = 0; position == NULL; i++) {
+        if (keys[i] == key) {
+            position = i;
+        }
+    }
+    if (position == NULL) {
+        throw "Invalid Configuration Parameter";
+    }
+    return values[position];
 }
 
 ConfigurationManager::~ConfigurationManager() {
