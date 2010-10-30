@@ -8,13 +8,23 @@
 #ifndef CONFIGURATIONMANAGER_H
 #define	CONFIGURATIONMANAGER_H
 
-class ConfigurationManager {
+#include "FileReaderWriter.h"
+#include <vector>
+
+
+class ConfigurationManager: public FileReaderWriter {
 public:
     static ConfigurationManager* getInstance();
+    string getConf(string key);
+protected:
+    virtual void parse(string line);
 private:
     ConfigurationManager();
     virtual ~ConfigurationManager();
     static ConfigurationManager* _instance;
+    //TODO: hash map is the right thing to do, not like this! This is sucks!!!
+    vector<string> keys;
+    vector<string> values;
 };
 
 #endif	/* CONFIGURATIONMANAGER_H */

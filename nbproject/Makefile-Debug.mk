@@ -33,8 +33,9 @@ OBJECTDIR=build/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/App.o \
+	${OBJECTDIR}/FileReaderWriter.o \
 	${OBJECTDIR}/main.o \
+	${OBJECTDIR}/App.o \
 	${OBJECTDIR}/Transaction.o \
 	${OBJECTDIR}/Consumer.o \
 	${OBJECTDIR}/Producer.o \
@@ -67,15 +68,20 @@ dist/Debug/GNU-MacOSX/consumerproducer: ${OBJECTFILES}
 	${MKDIR} -p dist/Debug/GNU-MacOSX
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/consumerproducer ${OBJECTFILES} ${LDLIBSOPTIONS} 
 
-${OBJECTDIR}/App.o: App.cpp 
+${OBJECTDIR}/FileReaderWriter.o: FileReaderWriter.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/App.o App.cpp
+	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/FileReaderWriter.o FileReaderWriter.cpp
 
 ${OBJECTDIR}/main.o: main.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
 	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/main.o main.cpp
+
+${OBJECTDIR}/App.o: App.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/App.o App.cpp
 
 ${OBJECTDIR}/Transaction.o: Transaction.cpp 
 	${MKDIR} -p ${OBJECTDIR}

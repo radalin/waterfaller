@@ -12,6 +12,7 @@ class App {
 public:
     App();
     void run();
+    App* bootstrap();
     virtual ~App();
 private:
 

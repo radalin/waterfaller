@@ -8,6 +8,7 @@
       <itemPath>App.h</itemPath>
       <itemPath>ConfigurationManager.h</itemPath>
       <itemPath>Consumer.h</itemPath>
+      <itemPath>FileReaderWriter.h</itemPath>
       <itemPath>LogEvent.h</itemPath>
       <itemPath>Logger.h</itemPath>
       <itemPath>Producer.h</itemPath>
@@ -17,6 +18,7 @@
                    displayName="Resource Files"
                    projectFiles="true"
                    kind="SOURCE_LOGICAL_FOLDER">
+      <itemPath>conf.ini</itemPath>
     </logicalFolder>
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
@@ -41,6 +43,7 @@
                      projectFiles="true"
                      kind="SOURCE_LOGICAL_FOLDER">
         <itemPath>ConfigurationManager.cpp</itemPath>
+        <itemPath>FileReaderWriter.cpp</itemPath>
         <itemPath>LogEvent.cpp</itemPath>
         <itemPath>Logger.cpp</itemPath>
       </logicalFolder>
