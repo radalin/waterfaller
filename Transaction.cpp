@@ -9,7 +9,7 @@
 #include <stdio.h>
 
 Transaction::Transaction(int t) {
-    hilmi = t;
+    
 }
 
 Transaction::~Transaction() {

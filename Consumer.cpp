@@ -8,13 +8,19 @@
 #include "Consumer.h"
 #include "Buffer.h"
 
-Consumer::Consumer() {
+Consumer::Consumer(int pid, int delay) {
+    this->pid = pid;
+    this->delay = delay;
 }
 
 Consumer::~Consumer() {
 }
 
-Transaction Consumer::readFromBuffer() {
-    return Buffer::getInstance()->readFrom();
+void Consumer::consume() {
+
+}
+
+void Consumer::readFromBuffer() {
+    Buffer::getInstance()->readFrom();
 }
 

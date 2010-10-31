@@ -8,12 +8,17 @@
 #ifndef TRANSACTION_H
 #define	TRANSACTION_H
 
+enum TransactionType {
+    A,
+    B
+};
+
 class Transaction {
 public:
     Transaction(int t);
     virtual ~Transaction();
-    int hilmi;
 private:
+    TransactionType type;
     
 };
 

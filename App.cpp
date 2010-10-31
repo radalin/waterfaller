@@ -11,6 +11,7 @@
 #include "Buffer.h"
 #include "LogEvent.h"
 #include "Logger.h"
+#include "Consumer.h"
 
 App::App() {
 }
@@ -35,18 +36,38 @@ void App::run() {
 }
 
 void App::createProducers() {
-    for (int i = 0 ; i < atoi(conf->getConf("max_producer_count").c_str()); i++) {
+    for (int i = 0 ; i < conf->getIntConf("max_producer_count"); i++) {
         //fork and create producers...
-        {
-            LogEvent e("Producer created", PRODUCER_CREATION, 0);
-            logger->log(e);
+        int pid = fork();
+        if (pid < 0) {
+            throw "Child Process cannot be created";
+        } else if (pid > 0) { //If this the child process...
+            {
+                LogEvent e("Producer created", PRODUCER_CREATION, 0);
+                logger->log(e);
+            }
+            Producer p(getpid(), 10);
+            p.createTransactions();
+            exit(0); //End the lifecycle of the child process...
         }
     }
 }
 
 void App::createConsumers() {
-    for (int i = 0 ; i < atoi(conf->getConf("max_consumer_count").c_str()); i++) {
+    for (int i = 0 ; i < conf->getIntConf("max_consumer_count"); i++) {
         //fork and create consumers...
+        int pid = fork();
+        if (pid < 0) {
+            throw "Child Process cannot be created";
+        } else if (pid > 0) { //If this the child process...
+            {
+                LogEvent e("Consumer created", CONSUMER_CREATION, 0);
+                logger->log(e);
+            }
+            Consumer c(getpid(), 10);
+            c.consume();
+            exit(0); //End the lifecycle of the child process...
+        }
     }
 }
 

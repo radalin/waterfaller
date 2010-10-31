@@ -43,16 +43,21 @@ void ConfigurationManager::parse(string line) {
 
 string ConfigurationManager::getConf(string key) {
     //Find the position for the key and return the value...
-    int position = NULL;
-    for (int i = 0; position == NULL; i++) {
+    int position = -1;
+    for (int i = 0; position == -1; i++) {
         if (keys[i] == key) {
             position = i;
         }
     }
-    if (position == NULL) {
+    if (position == -1) {
         throw "Invalid Configuration Parameter";
     }
     return values[position];
+}
+
+int ConfigurationManager::getIntConf(string key) {
+    string s = this->getConf(key);
+    return atoi(s.c_str());
 }
 
 ConfigurationManager::~ConfigurationManager() {

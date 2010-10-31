@@ -11,12 +11,14 @@
 
 class Producer {
 public:
-    Producer(int delay);
+    Producer(int pid, int delay);
     virtual ~Producer();
     Transaction createTransaction();
-    void writeToBuffer(Transaction t);
+    void createTransactions();
 private:
+    void writeToBuffer(Transaction t);
     int delayTime;
+    int pid;
 };
 
 #endif	/* PRODUCER_H */

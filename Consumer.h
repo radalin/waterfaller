@@ -12,11 +12,13 @@
 
 class Consumer {
 public:
-    Consumer();
-    Transaction readFromBuffer();
+    Consumer(int pid, int delay);
     virtual ~Consumer();
+    void consume();
 private:
-
+    void readFromBuffer();
+    int pid;
+    int delay;
 };
 
 #endif	/* CONSUMER_H */

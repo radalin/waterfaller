@@ -11,18 +11,21 @@
 #include "Logger.h"
 #include "Buffer.h"
 
-Producer::Producer(int delay) {
+Producer::Producer(int pid, int delay) {
     delayTime = delay;
-    LogEvent e("ali", PRODUCER_CREATION, 1);
+    this->pid = pid;
+    LogEvent e("Producer is created", PRODUCER_CREATION, pid);
     Logger::getInstance()->log(e);
 }
 
 Producer::~Producer() {
 }
 
+void Producer::createTransactions() {
+
+}
+
 Transaction Producer::createTransaction() {
-    Transaction t(12);
-    return t;
 }
 
 void Producer::writeToBuffer(Transaction t) {
