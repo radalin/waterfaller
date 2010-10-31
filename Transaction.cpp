@@ -36,7 +36,9 @@ string Transaction::getData() {
 }
 
 string Transaction::getDataString() {
+    char hexId[4];
+    sprintf(hexId, "%04X", id);
     stringstream d;
-    d << id << type << data;
+    d << hexId << type << data;
     return d.str();
 }

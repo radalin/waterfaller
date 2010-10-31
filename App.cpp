@@ -69,7 +69,11 @@ void App::createProducers() {
                 LogEvent e("Producer created", PRODUCER_CREATION, getpid());
                 logger->log(e);
             }
-            Producer p(getpid(), conf->getIntConf("transaction_production_delay"), conf->getIntConf("producer_lifespan"));
+            Producer p(
+                getpid(),
+                conf->getIntConf("transaction_production_delay"),
+                conf->getIntConf("producer_lifespan")
+            );
             p.createTransactions();
             exit(EXIT_SUCCESS); //End the lifecycle of the child process...
         }

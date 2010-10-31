@@ -29,7 +29,6 @@ Producer::~Producer() {
 }
 
 void Producer::createTransactions() {
-    Logger* l = Logger::getInstance();
     while ((startTime + lifeSpan) > time(NULL)) {
         Transaction t = this->createTransaction();
         bool writingSuccess = false;
