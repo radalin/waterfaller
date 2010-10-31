@@ -21,7 +21,7 @@ private:
     float delayTime;
     int pid;
     int lifeSpan;
-    int startTime;
+    long startTime;
     int startingId;
 };
 

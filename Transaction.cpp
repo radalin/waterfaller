@@ -14,12 +14,10 @@ Transaction::Transaction(TransactionType type, int id, string data) {
     this->type = type;
     this->id = id;
     this->data = data;
-    {
-        stringstream message;
-        message << "Transaction is created with data: '" << this->getDataString() << "'";
-        LogEvent e(message.str(), TRANSACTION_PRODUCTION, getpid());
-        //Logger::getInstance()->log(e);
-    }
+}
+
+string Transaction::setWithDataString(string dataStr) {
+    //parse data string and assign appriate values...
 }
 
 Transaction::~Transaction() {

@@ -30,10 +30,12 @@ Buffer* Buffer::getInstance() {
     return _instance;
 }
 
-bool Buffer::readFrom() {
+bool Buffer::readFrom(Transaction &t) {
     if (this->isEmpty()) {
         return false;
     }
+    //TODO: Read the first line and delete it...x
+    t.setWithDataString("");
     return true;
 }
 
@@ -42,9 +44,6 @@ bool Buffer::writeTo(Transaction t) {
         return false;
     }
     this->append(t.getDataString());
-    stringstream m;
-    m << "count of buffer: " << count++ << "\n";
-    Logger::getInstance()->log(m.str());
     return true;
 }
 

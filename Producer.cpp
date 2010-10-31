@@ -31,6 +31,12 @@ Producer::~Producer() {
 void Producer::createTransactions() {
     while ((startTime + lifeSpan) > time(NULL)) {
         Transaction t = this->createTransaction();
+        {
+            stringstream message;
+            message << "Transaction is created with data: '" << t.getDataString() << "'";
+            LogEvent e(message.str(), TRANSACTION_PRODUCTION, getpid());
+            Logger::getInstance()->log(e);
+        }
         bool writingSuccess = false;
         do {
             writingSuccess = this->writeToBuffer(t);
@@ -45,7 +51,13 @@ Transaction Producer::createTransaction() {
     for (int i = 0; i < 95; i++) {
         ss << "Z";
     }
-    Transaction t(TRANS_TYPE_A, ++startingId, ss.str());
+    TransactionType type = TRANS_TYPE_A;
+    srand(time(NULL));
+    int random = rand() % 2;
+    if (random == 1) {
+        type = TRANS_TYPE_B;
+    }
+    Transaction t(type, ++startingId, ss.str());
     return t;
 }
 

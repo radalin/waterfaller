@@ -15,7 +15,7 @@
 class Buffer: public FileReaderWriter {
 public:
     bool writeTo(Transaction t);
-    bool readFrom();
+    bool readFrom(Transaction &t);
     bool isEmpty();
     bool isFull();
     static Buffer* getInstance();

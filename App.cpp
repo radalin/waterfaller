@@ -89,7 +89,11 @@ void App::createConsumers() {
                 LogEvent e("Consumer created", CONSUMER_CREATION, getpid());
                 logger->log(e);
             }
-            Consumer c(getpid(), 10);
+            Consumer c(
+                getpid(),
+                conf->getIntConf("transaction_consumption_delay"),
+                conf->getIntConf("consumer_lifespan")
+            );
             c.consume();
             exit(EXIT_SUCCESS); //End the lifecycle of the child process...
         }
