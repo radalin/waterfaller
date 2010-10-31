@@ -8,9 +8,12 @@
 #ifndef CONSUMER_H
 #define	CONSUMER_H
 
+#include "Transaction.h"
+
 class Consumer {
 public:
     Consumer();
+    Transaction readFromBuffer();
     virtual ~Consumer();
 private:
 

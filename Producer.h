@@ -14,6 +14,7 @@ public:
     Producer(int delay);
     virtual ~Producer();
     Transaction createTransaction();
+    void writeToBuffer(Transaction t);
 private:
     int delayTime;
 };

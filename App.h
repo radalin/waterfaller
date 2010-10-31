@@ -8,14 +8,21 @@
 #ifndef APP_H
 #define	APP_H
 
+#include "ConfigurationManager.h"
+#include "Logger.h"
+
+
 class App {
 public:
     App();
     void run();
     App* bootstrap();
     virtual ~App();
+    void createProducers();
+    void createConsumers();
 private:
-
+    ConfigurationManager* conf;
+    Logger* logger;
 };
 
 #endif	/* APP_H */

@@ -7,7 +7,7 @@
 
 #include "LogEvent.h"
 
-LogEvent::LogEvent(string message, LogEventType new_type, long new_pid) {
+LogEvent::LogEvent(string message, LogEventType new_type, int new_pid) {
     this->message = message;
     type = new_type;
     pid = new_pid;
@@ -21,7 +21,7 @@ string LogEvent::getMessage() {
     return message;
 }
 
-long LogEvent::getPid() {
+int LogEvent::getPid() {
     return pid;
 }
 

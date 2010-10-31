@@ -6,10 +6,15 @@
  */
 
 #include "Consumer.h"
+#include "Buffer.h"
 
 Consumer::Consumer() {
 }
 
 Consumer::~Consumer() {
+}
+
+Transaction Consumer::readFromBuffer() {
+    return Buffer::getInstance()->readFrom();
 }
 

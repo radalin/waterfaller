@@ -11,15 +11,16 @@
 #include <iostream>
 
 #include "LogEvent.h"
+#include "FileReaderWriter.h"
 
 
-class Logger {
+class Logger: public FileReaderWriter {
 public:
     static Logger* getInstance();
     void log(string message);
     void log(LogEvent e);
 private:
-    Logger(){};
+    Logger();
     virtual ~Logger(){};
     static Logger* _instance;
 };

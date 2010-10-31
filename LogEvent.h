@@ -11,19 +11,26 @@
 
 using namespace std;
 
-enum LogEventType {PRODUCER_CREATION, TRANSACTION_CREATION, CONSUMER_CREATION};
+enum LogEventType {
+    PRODUCER_CREATION,
+    CONSUMER_CREATION,
+    TRANSACTION_CONSUMPTION,
+    TRANSACTION_PRODUCTION,
+    APPLICATION_BEGIN,
+    APPLICATION_END
+};
 
 class LogEvent {
 public:
-    LogEvent(string message, LogEventType type, long pid);
+    LogEvent(string message, LogEventType type, int pid);
     virtual ~LogEvent();
     string getMessage();
     LogEventType getType();
-    long getPid();
+    int getPid();
 private:
     string message;
     LogEventType type;
-    long pid;
+    int pid;
 };
 
 #endif	/* LOGEVENT_H */

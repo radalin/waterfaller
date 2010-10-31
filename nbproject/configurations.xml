@@ -6,6 +6,7 @@
                    projectFiles="true"
                    kind="SOURCE_LOGICAL_FOLDER">
       <itemPath>App.h</itemPath>
+      <itemPath>Buffer.h</itemPath>
       <itemPath>ConfigurationManager.h</itemPath>
       <itemPath>Consumer.h</itemPath>
       <itemPath>FileReaderWriter.h</itemPath>
@@ -18,6 +19,8 @@
                    displayName="Resource Files"
                    projectFiles="true"
                    kind="SOURCE_LOGICAL_FOLDER">
+      <itemPath>application.log</itemPath>
+      <itemPath>buffer.txt</itemPath>
       <itemPath>conf.ini</itemPath>
     </logicalFolder>
     <logicalFolder name="SourceFiles"
@@ -34,6 +37,7 @@
                      displayName="infra"
                      projectFiles="true"
                      kind="SOURCE_LOGICAL_FOLDER">
+        <itemPath>Buffer.cpp</itemPath>
         <itemPath>Consumer.cpp</itemPath>
         <itemPath>Producer.cpp</itemPath>
         <itemPath>Transaction.cpp</itemPath>

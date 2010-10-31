@@ -14,4 +14,3 @@ Transaction::Transaction(int t) {
 
 Transaction::~Transaction() {
 }
-

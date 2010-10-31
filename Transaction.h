@@ -12,11 +12,9 @@ class Transaction {
 public:
     Transaction(int t);
     virtual ~Transaction();
-    void hede();
     int hilmi;
 private:
     
 };
 
 #endif	/* TRANSACTION_H */
-

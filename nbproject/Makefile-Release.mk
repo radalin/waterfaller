@@ -34,6 +34,7 @@ OBJECTDIR=build/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/FileReaderWriter.o \
+	${OBJECTDIR}/Buffer.o \
 	${OBJECTDIR}/main.o \
 	${OBJECTDIR}/App.o \
 	${OBJECTDIR}/Transaction.o \
@@ -72,6 +73,11 @@ ${OBJECTDIR}/FileReaderWriter.o: FileReaderWriter.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/FileReaderWriter.o FileReaderWriter.cpp
+
+${OBJECTDIR}/Buffer.o: Buffer.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/Buffer.o Buffer.cpp
 
 ${OBJECTDIR}/main.o: main.cpp 
 	${MKDIR} -p ${OBJECTDIR}

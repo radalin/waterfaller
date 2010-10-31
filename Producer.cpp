@@ -9,6 +9,7 @@
 #include "Transaction.h"
 #include "Consumer.h"
 #include "Logger.h"
+#include "Buffer.h"
 
 Producer::Producer(int delay) {
     delayTime = delay;
@@ -22,5 +23,9 @@ Producer::~Producer() {
 Transaction Producer::createTransaction() {
     Transaction t(12);
     return t;
+}
+
+void Producer::writeToBuffer(Transaction t) {
+    Buffer::getInstance()->writeTo(t);
 }
 

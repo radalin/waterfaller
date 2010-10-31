@@ -10,10 +10,15 @@
 #include <stdio.h>
 #include <string>
 #include <iostream>
+#include <sstream>
 
 using namespace std;
 
 Logger* Logger::_instance = NULL;
+
+Logger::Logger() {
+    this->fileName = (char *) "application.log";
+}
 
 Logger* Logger::getInstance() {
     if (!_instance) {
@@ -23,12 +28,11 @@ Logger* Logger::getInstance() {
 }
 
 void Logger::log(string message) {
-    cout<<message<<"\n";
+    this->append(message);
 }
 
 void Logger::log(LogEvent e) {
-    //char* message;
-    //sprintf(message, "Logging Event with type: %s with message:", e.getMessage());
-    cout << e.getMessage() << " mesaj\n";
-    //this->log(message);
+    stringstream ss;
+    ss << "Logging Event wity type: '" << e.getType() << "' and with message: '" << e.getMessage() << "' for pid: '" << e.getPid() << "' and execTime: ";
+    this->log(ss.str());
 }
