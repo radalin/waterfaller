@@ -1,2 +1,4 @@
 build*
 dist*
+application.log
+buffer.txt

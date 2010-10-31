@@ -34,7 +34,7 @@ bool Buffer::readFrom(Transaction &t) {
     if (this->isEmpty()) {
         return false;
     }
-    //TODO: Read the first line and delete it...x
+    //TODO: Read the first line and delete it...
     t.setWithDataString("");
     return true;
 }
