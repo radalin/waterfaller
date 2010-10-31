@@ -60,6 +60,11 @@ int ConfigurationManager::getIntConf(string key) {
     return atoi(s.c_str());
 }
 
+float ConfigurationManager::getFloatConf(string key) {
+    string s = this->getConf(key);
+    return atof(s.c_str());
+}
+
 ConfigurationManager::~ConfigurationManager() {
 }
 

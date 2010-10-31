@@ -7,18 +7,22 @@
 
 #ifndef PRODUCER_H
 #define	PRODUCER_H
+
 #include "Transaction.h"
 
 class Producer {
 public:
-    Producer(int pid, int delay);
+    Producer(int pid, float delay, int lifeSpan);
     virtual ~Producer();
     Transaction createTransaction();
     void createTransactions();
 private:
-    void writeToBuffer(Transaction t);
-    int delayTime;
+    bool writeToBuffer(Transaction t);
+    float delayTime;
     int pid;
+    int lifeSpan;
+    int startTime;
+    int startingId;
 };
 
 #endif	/* PRODUCER_H */

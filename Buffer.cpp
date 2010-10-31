@@ -7,11 +7,14 @@
 
 #include "Buffer.h"
 #include "Transaction.h"
+#include "ConfigurationManager.h"
 
 Buffer* Buffer::_instance = NULL;
 
 Buffer::Buffer() {
     this->fileName = (char*) "buffer.txt";
+    limit = ConfigurationManager::getInstance()->getIntConf("buffer_limit");
+    count = 0;
 }
 
 Buffer::~Buffer() {
@@ -24,19 +27,26 @@ Buffer* Buffer::getInstance() {
     return _instance;
 }
 
-Transaction Buffer::readFrom() {
-    Transaction t(12);
-    return t;
+bool Buffer::readFrom() {
+    if (this->isEmpty()) {
+        return false;
+    }
+    count--;
+    return true;
 }
 
-void Buffer::writeTo(Transaction t) {
-    
+bool Buffer::writeTo(Transaction t) {
+    if (this->isFull()) {
+        return false;
+    }
+    count++;
+    return true;
 }
 
 bool Buffer::isEmpty() {
-    return false;
+    return count == 0;
 }
 
 bool Buffer::isFull() {
-    return false;
+    return count == limit;
 }

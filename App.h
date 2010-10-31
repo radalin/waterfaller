@@ -23,7 +23,8 @@ public:
 private:
     ConfigurationManager* conf;
     Logger* logger;
+    pid_t* pIdList;
+    int totalProcessCount;
+    void waitForChildren();
 };
-
 #endif	/* APP_H */
-

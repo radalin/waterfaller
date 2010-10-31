@@ -20,7 +20,7 @@ void Consumer::consume() {
 
 }
 
-void Consumer::readFromBuffer() {
-    Buffer::getInstance()->readFrom();
+bool Consumer::readFromBuffer() {
+    return Buffer::getInstance()->readFrom();
 }
 

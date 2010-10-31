@@ -33,6 +33,8 @@ void Logger::log(string message) {
 
 void Logger::log(LogEvent e) {
     stringstream ss;
-    ss << "Logging Event wity type: '" << e.getType() << "' and with message: '" << e.getMessage() << "' for pid: '" << e.getPid() << "' and execTime: ";
+    ss<< "Logging Event wity type: '" << e.getType() << "' for pid: '"
+        << e.getPid() << "' and execTime: '" << "' and with message: "
+        << e.getMessage() ;
     this->log(ss.str());
 }

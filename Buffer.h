@@ -14,15 +14,18 @@
 
 class Buffer: public FileReaderWriter {
 public:
-    void writeTo(Transaction t);
-    Transaction readFrom();
+    bool writeTo(Transaction t);
+    bool readFrom();
     bool isEmpty();
     bool isFull();
+    bool isAvailable();
     static Buffer* getInstance();
 private:
     Buffer();
     virtual ~Buffer();
     static Buffer* _instance;
+    int limit;
+    int count;
 };
 
 #endif	/* BUFFER_H */

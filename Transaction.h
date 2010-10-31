@@ -8,18 +8,26 @@
 #ifndef TRANSACTION_H
 #define	TRANSACTION_H
 
+#include <string>
+
+using namespace std;
+
 enum TransactionType {
-    A,
-    B
+    TRANS_TYPE_A,
+    TRANS_TYPE_B
 };
 
 class Transaction {
 public:
-    Transaction(int t);
+    Transaction(TransactionType type, int id, string data);
     virtual ~Transaction();
+    TransactionType getType();
+    int getId();
+    string getData();
 private:
     TransactionType type;
-    
+    int id;
+    string data;
 };
 
 #endif	/* TRANSACTION_H */

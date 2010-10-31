@@ -17,6 +17,7 @@ public:
     static ConfigurationManager* getInstance();
     string getConf(string key);
     int getIntConf(string key);
+    float getFloatConf(string key);
 protected:
     virtual void parse(string line);
 private:
