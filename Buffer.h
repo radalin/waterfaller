@@ -18,14 +18,16 @@ public:
     bool readFrom();
     bool isEmpty();
     bool isFull();
-    bool isAvailable();
     static Buffer* getInstance();
+protected:
+    virtual void parse(string line);
 private:
     Buffer();
     virtual ~Buffer();
     static Buffer* _instance;
     int limit;
     int count;
+    void calculateBufferSize();
 };
 
 #endif	/* BUFFER_H */

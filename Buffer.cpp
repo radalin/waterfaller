@@ -5,9 +5,12 @@
  * Created on October 31, 2010, 11:27 AM
  */
 
+#include <sstream>
+
 #include "Buffer.h"
 #include "Transaction.h"
 #include "ConfigurationManager.h"
+#include "Logger.h"
 
 Buffer* Buffer::_instance = NULL;
 
@@ -31,7 +34,6 @@ bool Buffer::readFrom() {
     if (this->isEmpty()) {
         return false;
     }
-    count--;
     return true;
 }
 
@@ -39,14 +41,28 @@ bool Buffer::writeTo(Transaction t) {
     if (this->isFull()) {
         return false;
     }
-    count++;
+    this->append(t.getDataString());
+    stringstream m;
+    m << "count of buffer: " << count++ << "\n";
+    Logger::getInstance()->log(m.str());
     return true;
 }
 
 bool Buffer::isEmpty() {
+    this->calculateBufferSize();
     return count == 0;
 }
 
 bool Buffer::isFull() {
+    this->calculateBufferSize();
     return count == limit;
+}
+
+void Buffer::calculateBufferSize() {
+    count = 0;
+    this->openReadClose();
+}
+
+void Buffer::parse(string line) {
+    count++;
 }

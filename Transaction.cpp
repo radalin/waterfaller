@@ -6,12 +6,20 @@
  */
 
 #include "Transaction.h"
+#include "Logger.h"
 #include <stdio.h>
+#include <sstream>
 
 Transaction::Transaction(TransactionType type, int id, string data) {
     this->type = type;
     this->id = id;
     this->data = data;
+    {
+        stringstream message;
+        message << "Transaction is created with data: '" << this->getDataString() << "'";
+        LogEvent e(message.str(), TRANSACTION_PRODUCTION, getpid());
+        //Logger::getInstance()->log(e);
+    }
 }
 
 Transaction::~Transaction() {
@@ -25,4 +33,10 @@ int Transaction::getId() {
 }
 string Transaction::getData() {
     return data;
+}
+
+string Transaction::getDataString() {
+    stringstream d;
+    d << id << type << data;
+    return d.str();
 }

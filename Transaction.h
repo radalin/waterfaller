@@ -24,6 +24,7 @@ public:
     TransactionType getType();
     int getId();
     string getData();
+    string getDataString();
 private:
     TransactionType type;
     int id;
