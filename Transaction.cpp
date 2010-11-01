@@ -17,7 +17,7 @@ Transaction::Transaction(TransactionType type, int id, string data) {
 }
 
 string Transaction::setWithDataString(string dataStr) {
-    //parse data string and assign appriate values...
+    //FIXME: Parse data string and assign appriate values...
 }
 
 Transaction::~Transaction() {

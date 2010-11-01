@@ -34,8 +34,31 @@ bool Buffer::readFrom(Transaction &t) {
     if (this->isEmpty()) {
         return false;
     }
-    //TODO: Read the first line and delete it...
-    t.setWithDataString("");
+    ifstream file;
+    string line;
+    stringstream content;
+    bool isFirstLine = true;
+    file.open(fileName);
+    if (file.is_open()) {
+        while (!file.eof()) {
+            getline(file, line);
+            if (line == "") {
+                continue;
+            }
+            if (isFirstLine) {
+                isFirstLine = false;
+                //TODO: This part causes a problem, I should fix it...
+                t.setWithDataString(line);
+            } else {
+                content << line << "\n";
+            }
+        }
+    }
+    file.close();
+    ofstream output;
+    output.open(fileName);
+    output << content.str();
+    output.close();
     return true;
 }
 

@@ -8,10 +8,7 @@
 #include <cstdlib>
 #include <stdio.h>
 #include <stdlib.h>
-#include <string>
-#include <iostream>
 
-#include "Producer.h"
 #include "App.h"
 
 using namespace std;

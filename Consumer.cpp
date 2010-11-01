@@ -24,7 +24,7 @@ Consumer::~Consumer() {
 
 void Consumer::consume() {
     while ((startTime + lifeSpan) > time(NULL)) {
-        //this->readFromBuffer();
+        this->readFromBuffer();
         sleep(delay);
     }
 }
