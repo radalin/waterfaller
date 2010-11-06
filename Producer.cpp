@@ -21,15 +21,12 @@ Producer::Producer(int pid, float delay, int lifeSpan) {
     this->pid = pid;
     startTime = time(NULL);
     this->lifeSpan = lifeSpan;
-    startingId = 0;
-    LogEvent e("Producer is created", PRODUCER_CREATION, pid);
-    Logger::getInstance()->log(e);
 }
 
 Producer::~Producer() {
 }
 
-void Producer::createTransactions() {
+void Producer::produce() {
     while ((startTime + lifeSpan) > time(NULL)) {
         Transaction t = this->createTransaction();
         {

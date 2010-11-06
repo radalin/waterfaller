@@ -5,6 +5,8 @@
  * Created on October 28, 2010, 4:03 PM
  */
 
+#include <sstream>
+
 #include "App.h"
 #include "ConfigurationManager.h"
 #include "Producer.h"
@@ -37,7 +39,29 @@ void App::run() {
     //Wait for children to finish...
     this->waitForChildren();
     if (!Buffer::getInstance()->isEmpty()) { //Check the buffer if it's empty or not...
-        //TODO: Create another consumer with minimal delay and empty buffer...
+        int remaining = Buffer::getInstance()->getCount();
+        {
+            stringstream message;
+            message << "Buffer is not empty!" << "There are still " << remaining << "transactions to be consumed.";
+            LogEvent e(message.str(), BUFFER_EMPTY, getpid());
+            logger->log(e);
+        }
+        //Create the consumer according to the remaning transaction count...
+        {
+            LogEvent e("Consumer to consume remaining transactions is created", CONSUMER_CREATION, getpid());
+            logger->log(e);
+        }
+        Consumer c(
+            getpid(),
+            conf->getIntConf("transaction_consumption_delay"),
+             //Set the lifespan to consume all the remaining transactions accordingly...
+            (remaining + 1) * conf->getIntConf("transaction_consumption_delay")
+        );
+        c.consume();
+        {
+            LogEvent e("Buffer is emptied", BUFFER_EMPTIED, getpid());
+            logger->log(e);
+        }
     }
     {
         LogEvent e("Application has ended", APPLICATION_END, getpid());
@@ -74,7 +98,7 @@ void App::createProducers() {
                 conf->getIntConf("transaction_production_delay"),
                 conf->getIntConf("producer_lifespan")
             );
-            p.createTransactions();
+            p.produce();
             exit(EXIT_SUCCESS); //End the lifecycle of the child process...
         }
     }

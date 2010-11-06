@@ -15,14 +15,13 @@ public:
     Producer(int pid, float delay, int lifeSpan);
     virtual ~Producer();
     Transaction createTransaction();
-    void createTransactions();
+    void produce();
 private:
     bool writeToBuffer(Transaction t);
     float delayTime;
     int pid;
     int lifeSpan;
     long startTime;
-    int startingId;
 };
 
 #endif	/* PRODUCER_H */

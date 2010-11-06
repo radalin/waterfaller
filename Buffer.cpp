@@ -30,12 +30,13 @@ Buffer* Buffer::getInstance() {
     return _instance;
 }
 
-bool Buffer::readFrom(Transaction &t) {
+string Buffer::readFrom() {
+    //FIXME: Bad implementation...
     if (this->isEmpty()) {
-        return false;
+        return "false";
     }
     ifstream file;
-    string line;
+    string line, dataString;
     stringstream content;
     bool isFirstLine = true;
     file.open(fileName);
@@ -48,7 +49,7 @@ bool Buffer::readFrom(Transaction &t) {
             if (isFirstLine) {
                 isFirstLine = false;
                 //TODO: This part causes a problem, I should fix it...
-                t.setWithDataString(line);
+                dataString = line;
             } else {
                 content << line << "\n";
             }
@@ -59,7 +60,7 @@ bool Buffer::readFrom(Transaction &t) {
     output.open(fileName);
     output << content.str();
     output.close();
-    return true;
+    return dataString;
 }
 
 bool Buffer::writeTo(Transaction t) {
@@ -83,6 +84,11 @@ bool Buffer::isFull() {
 void Buffer::calculateBufferSize() {
     count = 0;
     this->openReadClose();
+}
+
+int Buffer::getCount() {
+    this->calculateBufferSize();
+    return count;
 }
 
 void Buffer::parse(string line) {

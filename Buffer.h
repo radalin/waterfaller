@@ -8,17 +8,21 @@
 #ifndef BUFFER_H
 #define	BUFFER_H
 
+#include <string>
+
 #include "FileReaderWriter.h"
 #include "Transaction.h"
 
+using namespace std;
 
 class Buffer: public FileReaderWriter {
 public:
     bool writeTo(Transaction t);
-    bool readFrom(Transaction &t);
+    string readFrom();
     bool isEmpty();
     bool isFull();
     static Buffer* getInstance();
+    int getCount();
 protected:
     virtual void parse(string line);
 private:

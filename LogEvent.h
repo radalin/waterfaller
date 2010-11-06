@@ -18,7 +18,10 @@ enum LogEventType {
     TRANSACTION_PRODUCTION,
     APPLICATION_BEGIN,
     APPLICATION_END,
-    ERROR
+    ERROR,
+    BUFFER_EMPTY,
+    BUFFER_FULL,
+    BUFFER_EMPTIED
 };
 
 class LogEvent {

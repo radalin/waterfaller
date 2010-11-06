@@ -16,8 +16,20 @@ Transaction::Transaction(TransactionType type, int id, string data) {
     this->data = data;
 }
 
+Transaction::Transaction(string dataString) {
+    if (dataString == "") {
+        throw "cannot initialize with empty string";
+    }
+    this->setWithDataString(dataString);
+}
+
 string Transaction::setWithDataString(string dataStr) {
-    //FIXME: Parse data string and assign appriate values...
+    string idString = dataStr.substr(0, 4);
+    stringstream ss;
+    ss << std::hex << idString;
+    ss >> this->id;
+    this->type = (TransactionType) atoi(dataStr.substr(4, 1).c_str());
+    this->data = dataStr.substr(5);
 }
 
 Transaction::~Transaction() {

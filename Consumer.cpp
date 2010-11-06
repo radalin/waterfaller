@@ -24,17 +24,31 @@ Consumer::~Consumer() {
 
 void Consumer::consume() {
     while ((startTime + lifeSpan) > time(NULL)) {
-        this->readFromBuffer();
+        string data = this->readFromBuffer();
+        this->consumeSingle(data);
         sleep(delay);
     }
 }
 
-bool Consumer::readFromBuffer() {
-    bool readSuccess = false;
+void Consumer::consumeSingle(string data) {
+    cout << data << "\n";
+    if (data == "") {
+        return;
+    }
+    Transaction t(data);
+    {
+        stringstream message;
+        message << "Transaction is consumed with data: '" << t.getDataString() << "'";
+        LogEvent e(message.str(), TRANSACTION_CONSUMPTION, getpid());
+        Logger::getInstance()->log(e);
+    }
+}
+
+string Consumer::readFromBuffer() {
+    string data = "false";
     do {
-        Transaction t("empty_data");
-        readSuccess = Buffer::getInstance()->readFrom(t);
-    } while (!readSuccess); //Try to write to buffer until it's available...
-    return true;
+        data = Buffer::getInstance()->readFrom();
+    } while (data == "false"); //Try to write to buffer until it's available...
+    return data;
 }
 

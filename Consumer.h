@@ -17,7 +17,8 @@ public:
     virtual ~Consumer();
     void consume();
 private:
-    bool readFromBuffer();
+    string readFromBuffer();
+    void consumeSingle(string data);
     int pid;
     int delay;
     long startTime;

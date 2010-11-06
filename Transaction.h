@@ -20,7 +20,7 @@ enum TransactionType {
 class Transaction {
 public:
     Transaction(TransactionType type, int id, string data);
-    Transaction(string dataString) {};
+    Transaction(string dataString);
     virtual ~Transaction();
     TransactionType getType();
     int getId();
