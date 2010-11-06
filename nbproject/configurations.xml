@@ -14,6 +14,7 @@
       <itemPath>Logger.h</itemPath>
       <itemPath>Producer.h</itemPath>
       <itemPath>Transaction.h</itemPath>
+      <itemPath>TransactionIdManager.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -22,6 +23,7 @@
       <itemPath>application.log</itemPath>
       <itemPath>buffer.txt</itemPath>
       <itemPath>conf.ini</itemPath>
+      <itemPath>transCount.txt</itemPath>
     </logicalFolder>
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
@@ -50,6 +52,7 @@
         <itemPath>FileReaderWriter.cpp</itemPath>
         <itemPath>LogEvent.cpp</itemPath>
         <itemPath>Logger.cpp</itemPath>
+        <itemPath>TransactionIdManager.cpp</itemPath>
       </logicalFolder>
       <itemPath>main.cpp</itemPath>
     </logicalFolder>

@@ -36,8 +36,16 @@ bool FileReaderWriter::isCommentLine(string c) {
 }
 
 void FileReaderWriter::append(string line) {
+    this->write(line, this->fileName, ios::app);
+}
+
+void FileReaderWriter::write(string line) {
+    this->write(line, this->fileName);
+}
+
+void FileReaderWriter::write(string line, string fileName, _Ios_Openmode mode) {
     ofstream aFile;
-    aFile.open(fileName, ios::app);
+    aFile.open(fileName.c_str(), mode);
     aFile << line << "\n";
     aFile.close();
 }

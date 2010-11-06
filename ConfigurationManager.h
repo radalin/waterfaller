@@ -27,6 +27,7 @@ private:
     //TODO: hash map is the right thing to do, not like this! This is sucks!!!
     vector<string> keys;
     vector<string> values;
+    void setStartingTransacionId();
 };
 
 #endif	/* CONFIGURATIONMANAGER_H */

@@ -18,6 +18,8 @@ public:
     FileReaderWriter();
     void openReadClose();
     void append(string line);
+    void write(string line);
+    void write(string line, string fileName, _Ios_Openmode mode = ios::out | ios::trunc);
     virtual ~FileReaderWriter();
 protected:
     virtual void parse(string line);

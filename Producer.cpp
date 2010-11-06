@@ -14,6 +14,7 @@
 #include "Logger.h"
 #include "Buffer.h"
 #include "App.h"
+#include "TransactionIdManager.h"
 
 Producer::Producer(int pid, float delay, int lifeSpan) {
     delayTime = delay;
@@ -57,7 +58,7 @@ Transaction Producer::createTransaction() {
     if (random == 1) {
         type = TRANS_TYPE_B;
     }
-    Transaction t(type, ++startingId, ss.str());
+    Transaction t(type, TransactionIdManager::getInstance()->getNewId(), ss.str());
     return t;
 }
 

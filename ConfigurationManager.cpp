@@ -18,6 +18,7 @@ ConfigurationManager* ConfigurationManager::_instance = NULL;
 ConfigurationManager::ConfigurationManager() {
     this->fileName = (char*) "conf.ini";
     this->openReadClose();
+    this->setStartingTransacionId();
 }
 
 void ConfigurationManager::parse(string line) {
@@ -63,6 +64,10 @@ int ConfigurationManager::getIntConf(string key) {
 float ConfigurationManager::getFloatConf(string key) {
     string s = this->getConf(key);
     return atof(s.c_str());
+}
+
+void ConfigurationManager::setStartingTransacionId() {
+    this->write(this->getConf("starting_trans_id"), "transCount.txt");
 }
 
 ConfigurationManager::~ConfigurationManager() {

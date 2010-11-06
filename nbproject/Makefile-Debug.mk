@@ -39,6 +39,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/App.o \
 	${OBJECTDIR}/Transaction.o \
 	${OBJECTDIR}/Consumer.o \
+	${OBJECTDIR}/TransactionIdManager.o \
 	${OBJECTDIR}/Producer.o \
 	${OBJECTDIR}/Logger.o \
 	${OBJECTDIR}/ConfigurationManager.o \
@@ -98,6 +99,11 @@ ${OBJECTDIR}/Consumer.o: Consumer.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
 	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/Consumer.o Consumer.cpp
+
+${OBJECTDIR}/TransactionIdManager.o: TransactionIdManager.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/TransactionIdManager.o TransactionIdManager.cpp
 
 ${OBJECTDIR}/Producer.o: Producer.cpp 
 	${MKDIR} -p ${OBJECTDIR}
