@@ -42,7 +42,7 @@ void App::run() {
         int remaining = Buffer::getInstance()->getCount();
         {
             stringstream message;
-            message << "Buffer is not empty!" << "There are still " << remaining << "transactions to be consumed.";
+            message << "Buffer is not empty! There are still " << remaining << " transactions to be consumed.";
             LogEvent e(message.str(), BUFFER_EMPTY, getpid());
             logger->log(e);
         }
